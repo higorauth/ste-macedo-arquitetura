@@ -1,85 +1,96 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useState, useEffect, useCallback, useRef } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
-import { Button } from "@/components/ui/Button";
-import { ScrollIndicator } from "@/components/ui/ScrollIndicator";
 import { Logo } from "@/components/brand/Logo";
-import { staggerContainer, wordReveal, fadeUp } from "@/lib/animations";
+import { PROJECTS } from "@/lib/constants";
+
+const HERO_IMAGES = PROJECTS.map((p) => ({
+  src: p.image.replace("w=1200", "w=1920"),
+  alt: p.title,
+}));
 
 export function Hero() {
+  const [current, setCurrent] = useState(0);
+  const [direction, setDirection] = useState(1);
+  const timerRef = useRef<ReturnType<typeof setInterval>>(null);
+
+  const startTimer = useCallback(() => {
+    if (timerRef.current) clearInterval(timerRef.current);
+    timerRef.current = setInterval(() => {
+      setDirection(1);
+      setCurrent((prev) => (prev + 1) % HERO_IMAGES.length);
+    }, 5000);
+  }, []);
+
+  useEffect(() => {
+    startTimer();
+    return () => {
+      if (timerRef.current) clearInterval(timerRef.current);
+    };
+  }, [startTimer]);
+
+  const goTo = (index: number) => {
+    setDirection(index > current ? 1 : -1);
+    setCurrent(index);
+    startTimer();
+  };
+
+  const variants = {
+    enter: (dir: number) => ({ x: dir > 0 ? "100%" : "-100%" }),
+    center: { x: "0%" },
+    exit: (dir: number) => ({ x: dir > 0 ? "-100%" : "100%" }),
+  };
+
   return (
-    <section
-      id="inicio"
-      className="relative h-screen w-full overflow-hidden flex items-center"
-    >
-      <div className="absolute inset-0">
-        <Image
-          src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1920&q=80"
-          alt="Interior contemporâneo minimalista"
-          fill
-          priority
-          className="object-cover"
-          sizes="100vw"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20" />
+    <section className="relative h-screen w-full overflow-hidden flex items-center justify-center">
+      <AnimatePresence initial={false} custom={direction} mode="popLayout">
+        <motion.div
+          key={current}
+          custom={direction}
+          variants={variants}
+          initial="enter"
+          animate="center"
+          exit="exit"
+          transition={{ duration: 0.8, ease: [0.4, 0, 0.2, 1] }}
+          className="absolute inset-0"
+        >
+          <Image
+            src={HERO_IMAGES[current].src}
+            alt={HERO_IMAGES[current].alt}
+            fill
+            priority
+            className="object-cover"
+            sizes="100vw"
+          />
+        </motion.div>
+      </AnimatePresence>
+
+      <div className="absolute inset-0 bg-black/50 z-[1]" />
+
+      <div className="relative z-10 flex flex-col items-center text-center px-6">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.3, duration: 1, ease: [0.25, 0.46, 0.45, 0.94] }}
+        >
+          <Logo variant="full" color="light" size={72} />
+        </motion.div>
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 w-full">
-        <div className="max-w-2xl">
-          <motion.div
-            className="mb-8 opacity-60"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 0.6 }}
-            transition={{ delay: 0.3, duration: 1 }}
-          >
-            <Logo variant="full" color="light" size={48} />
-          </motion.div>
-
-          <motion.div
-            className="mb-8"
-            variants={staggerContainer}
-            initial="hidden"
-            animate="visible"
-          >
-            {["Projetamos", "espaços que"].map((word, i) => (
-              <motion.div key={i} className="overflow-hidden" variants={wordReveal}>
-                <span className="font-cormorant font-light italic text-5xl md:text-6xl lg:text-7xl text-white leading-[1.1]">
-                  {word}
-                </span>
-              </motion.div>
-            ))}
-            <motion.div className="overflow-hidden" variants={wordReveal}>
-              <span className="font-cormorant font-light italic text-5xl md:text-6xl lg:text-7xl text-white leading-[1.1] relative">
-                inspiram
-                <span className="absolute bottom-1 left-0 w-full h-[1px] bg-accent/60" />
-              </span>
-            </motion.div>
-          </motion.div>
-
-          <motion.p
-            className="font-outfit font-light text-base md:text-lg text-gray-300 max-w-lg mb-10 leading-relaxed"
-            variants={fadeUp}
-            initial="hidden"
-            animate="visible"
-            transition={{ delay: 0.8 }}
-          >
-            Arquitetura moderna e contemporânea que transforma ambientes em experiências
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.2, duration: 0.6 }}
-          >
-            <Button variant="outline-light" href="#projetos">
-              Conheça nossos projetos
-            </Button>
-          </motion.div>
-        </div>
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex items-center gap-2">
+        {HERO_IMAGES.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => goTo(index)}
+            className={`w-6 h-[2px] transition-all duration-300 ${
+              index === current ? "bg-white" : "bg-white/30"
+            }`}
+            aria-label={`Imagem ${index + 1}`}
+          />
+        ))}
       </div>
-
-      <ScrollIndicator />
     </section>
   );
 }

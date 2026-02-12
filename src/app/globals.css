@@ -29,13 +29,6 @@ body {
   overflow-x: hidden;
 }
 
-/* ===== CUSTOM CURSOR ===== */
-@media (pointer: fine) {
-  * {
-    cursor: none !important;
-  }
-}
-
 /* ===== SELECTION ===== */
 ::selection {
   background-color: var(--color-accent);

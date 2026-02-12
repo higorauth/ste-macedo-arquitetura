@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 import { Logo } from "@/components/brand/Logo";
 import { MobileMenu } from "./MobileMenu";
@@ -10,14 +12,18 @@ import { NAV_LINKS } from "@/lib/constants";
 export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { isAtTop } = useScrollDirection();
+  const pathname = usePathname();
+  const isHome = pathname === "/" || pathname === "";
+
+  const headerLight = isHome && isAtTop;
 
   return (
     <>
       <motion.header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          isAtTop
+          headerLight
             ? "bg-transparent"
-            : "bg-white/80 backdrop-blur-xl shadow-[0_1px_0_rgba(0,0,0,0.05)]"
+            : "bg-black/20 backdrop-blur-md"
         }`}
         initial={{ y: -100 }}
         animate={{ y: 0 }}
@@ -25,27 +31,23 @@ export function Header() {
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
-            <a href="#inicio" aria-label="Ir para o início">
+            <Link href="/" aria-label="Ir para o início">
               <Logo
                 variant="monogram"
-                color={isAtTop ? "light" : "dark"}
+                color="light"
                 size={40}
               />
-            </a>
+            </Link>
 
             <nav className="hidden lg:flex items-center gap-10">
               {NAV_LINKS.map((link) => (
-                <a
+                <Link
                   key={link.href}
                   href={link.href}
-                  className={`nav-link font-outfit font-light text-[13px] tracking-[0.15em] uppercase transition-colors duration-300 ${
-                    isAtTop
-                      ? "text-white/90 hover:text-white"
-                      : "text-gray-600 hover:text-black"
-                  }`}
+                  className={`nav-link font-outfit font-light text-[13px] tracking-[0.15em] uppercase transition-colors duration-300 text-white/90 hover:text-white ${pathname === link.href ? "!text-accent" : ""}`}
                 >
                   {link.label}
-                </a>
+                </Link>
               ))}
             </nav>
 
@@ -56,17 +58,17 @@ export function Header() {
             >
               <span
                 className={`block h-[1px] w-8 transition-colors duration-300 ${
-                  isAtTop ? "bg-white" : "bg-black"
+                  "bg-white"
                 }`}
               />
               <span
                 className={`block h-[1px] w-5 transition-colors duration-300 ${
-                  isAtTop ? "bg-white" : "bg-black"
+                  "bg-white"
                 }`}
               />
               <span
                 className={`block h-[1px] w-7 transition-colors duration-300 ${
-                  isAtTop ? "bg-white" : "bg-black"
+                  "bg-white"
                 }`}
               />
             </button>

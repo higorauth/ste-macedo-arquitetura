@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { Instagram, Facebook } from "lucide-react";
 import { Logo } from "@/components/brand/Logo";
@@ -27,13 +28,13 @@ export function Footer() {
           variants={fadeUp}
         >
           {NAV_LINKS.map((link) => (
-            <a
+            <Link
               key={link.href}
               href={link.href}
               className="nav-link font-outfit font-light text-[13px] tracking-[0.15em] uppercase text-gray-400 hover:text-white transition-colors duration-300"
             >
               {link.label}
-            </a>
+            </Link>
           ))}
         </motion.nav>
 

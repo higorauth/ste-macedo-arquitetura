@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { NAV_LINKS } from "@/lib/constants";
 
@@ -32,17 +33,20 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
 
           <nav className="flex flex-col items-center gap-8">
             {NAV_LINKS.map((link, index) => (
-              <motion.a
+              <motion.div
                 key={link.href}
-                href={link.href}
-                onClick={onClose}
-                className="font-cormorant font-light text-4xl md:text-5xl text-white hover:text-accent transition-colors duration-300"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1 + index * 0.08, duration: 0.5 }}
               >
-                {link.label}
-              </motion.a>
+                <Link
+                  href={link.href}
+                  onClick={onClose}
+                  className="font-cormorant font-light text-4xl md:text-5xl text-white hover:text-accent transition-colors duration-300"
+                >
+                  {link.label}
+                </Link>
+              </motion.div>
             ))}
           </nav>
 

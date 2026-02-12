@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ClientLayout } from "@/components/layout/ClientLayout";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -61,7 +62,7 @@ export default function RootLayout({
         />
       </head>
       <body className="grain-overlay">
-        {children}
+        <ClientLayout>{children}</ClientLayout>
       </body>
     </html>
   );

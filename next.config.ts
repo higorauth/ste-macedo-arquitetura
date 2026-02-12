@@ -3,6 +3,7 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   output: "export",
   basePath: "/ste-macedo-arquitetura",
+  trailingSlash: true,
   images: {
     unoptimized: true,
     remotePatterns: [

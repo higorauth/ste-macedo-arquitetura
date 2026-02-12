@@ -51,7 +51,7 @@ export function ProjectDetail({
     <>
       <div className="min-h-screen bg-black">
         {/* Hero do projeto */}
-        <div className="relative h-[60vh] md:h-[70vh] overflow-hidden">
+        <div className="relative h-[50vh] md:h-[70vh] overflow-hidden">
           <Image
             src={image}
             alt={title}
@@ -61,7 +61,7 @@ export function ProjectDetail({
           />
           <div className="absolute inset-0 bg-black/40" />
 
-          <div className="absolute inset-0 flex flex-col justify-end p-8 md:p-16 lg:p-24">
+          <div className="absolute inset-0 flex flex-col justify-end p-6 md:p-16 lg:p-24">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -70,7 +70,7 @@ export function ProjectDetail({
               <span className="font-outfit font-light text-xs tracking-[0.2em] uppercase text-white/70 mb-3 block">
                 {category}
               </span>
-              <h1 className="font-cormorant font-light text-4xl md:text-6xl lg:text-7xl text-white mb-4">
+              <h1 className="font-cormorant font-light text-3xl md:text-6xl lg:text-7xl text-white mb-4">
                 {title}
               </h1>
               <p className="font-outfit font-light text-sm md:text-base text-white/70 max-w-xl">
@@ -116,7 +116,7 @@ export function ProjectDetail({
             </div>
 
             {/* Ficha técnica */}
-            <div className="border-l border-white/10 pl-8">
+            <div className="border-t lg:border-t-0 lg:border-l border-white/10 pt-8 lg:pt-0 lg:pl-8">
               <h3 className="font-outfit font-light text-xs tracking-[0.2em] uppercase text-white/50 mb-6">
                 Ficha Técnica
               </h3>
@@ -244,7 +244,7 @@ export function ProjectDetail({
               type="button"
               aria-label="Fechar galeria"
               onClick={closeLightbox}
-              className="absolute top-6 right-6 text-white/60 hover:text-white transition-colors z-10"
+              className="absolute top-4 right-4 md:top-6 md:right-6 w-11 h-11 flex items-center justify-center text-white/60 hover:text-white transition-colors z-10"
             >
               <X className="w-6 h-6" />
             </button>
@@ -256,7 +256,7 @@ export function ProjectDetail({
                 e.stopPropagation();
                 prevImage();
               }}
-              className="absolute left-4 md:left-8 text-white/60 hover:text-white transition-colors z-10"
+              className="absolute left-2 md:left-8 w-11 h-11 flex items-center justify-center text-white/60 hover:text-white transition-colors z-10"
             >
               <ChevronLeft className="w-8 h-8" />
             </button>
@@ -294,7 +294,7 @@ export function ProjectDetail({
                 e.stopPropagation();
                 nextImage();
               }}
-              className="absolute right-4 md:right-8 text-white/60 hover:text-white transition-colors z-10"
+              className="absolute right-2 md:right-8 w-11 h-11 flex items-center justify-center text-white/60 hover:text-white transition-colors z-10"
             >
               <ChevronRight className="w-8 h-8" />
             </button>

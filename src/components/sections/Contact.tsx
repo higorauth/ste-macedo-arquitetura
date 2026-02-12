@@ -31,13 +31,13 @@ export function Contact() {
   };
 
   return (
-    <section id="contato" className="bg-white py-28 md:py-36 lg:py-40">
+    <section id="contato" className="bg-white py-20 md:py-36 lg:py-40">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <SectionTitle
           title="Vamos conversar sobre o seu projeto?"
         />
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-20">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-20">
           <motion.div
             className="lg:col-span-7"
             variants={slideInLeft}
@@ -45,7 +45,7 @@ export function Contact() {
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
           >
-            <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
+            <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 md:space-y-8">
               <div className="relative">
                 <input
                   {...register("name")}

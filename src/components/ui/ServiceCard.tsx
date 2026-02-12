@@ -13,11 +13,11 @@ interface ServiceCardProps {
 export function ServiceCard({ number, title, description, index }: ServiceCardProps) {
   return (
     <motion.div
-      className="group relative p-8 md:p-10 border-b border-gray-200 hover:-translate-y-1 hover:shadow-lg transition-all duration-400 bg-white"
+      className="group relative p-6 md:p-8 lg:p-10 border-b border-gray-200 hover:-translate-y-1 hover:shadow-lg transition-all duration-400 bg-white"
       variants={fadeUp}
       custom={index}
     >
-      <span className="absolute top-4 right-6 font-outfit font-extralight text-[80px] md:text-[100px] leading-none text-gray-100 select-none -z-0">
+      <span className="absolute top-4 right-6 font-outfit font-extralight text-[60px] md:text-[80px] lg:text-[100px] leading-none text-gray-100 select-none -z-0">
         {number}
       </span>
 

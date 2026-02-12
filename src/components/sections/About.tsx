@@ -14,7 +14,7 @@ import {
 
 export function About() {
   return (
-    <section id="sobre" className="bg-white py-28 md:py-36 lg:py-40">
+    <section id="sobre" className="bg-white py-20 md:py-36 lg:py-40">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center mb-24">
           <motion.div
@@ -33,7 +33,7 @@ export function About() {
                 sizes="(max-width: 1024px) 100vw, 55vw"
               />
             </div>
-            <div className="absolute -bottom-4 -right-4 w-24 h-24 border border-accent/30" />
+            <div className="absolute -bottom-4 -right-4 w-16 h-16 md:w-24 md:h-24 border border-accent/30 hidden sm:block" />
           </motion.div>
 
           <motion.div
@@ -92,7 +92,7 @@ export function About() {
         </div>
 
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8 pt-16 border-t border-gray-200"
+          className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-12 md:pt-16 border-t border-gray-200"
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"

@@ -22,7 +22,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
         >
           <button
             onClick={onClose}
-            className="absolute top-6 right-6 w-10 h-10 flex items-center justify-center"
+            className="absolute top-6 right-6 w-11 h-11 flex items-center justify-center"
             aria-label="Fechar menu"
           >
             <div className="relative w-6 h-6">
@@ -31,7 +31,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
             </div>
           </button>
 
-          <nav className="flex flex-col items-center gap-8">
+          <nav className="flex flex-col items-center gap-6 md:gap-8">
             {NAV_LINKS.map((link, index) => (
               <motion.div
                 key={link.href}
@@ -42,7 +42,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                 <Link
                   href={link.href}
                   onClick={onClose}
-                  className="font-cormorant font-light text-4xl md:text-5xl text-white hover:text-accent transition-colors duration-300"
+                  className="font-cormorant font-light text-3xl md:text-5xl text-white hover:text-accent transition-colors duration-300"
                 >
                   {link.label}
                 </Link>

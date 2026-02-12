@@ -53,7 +53,7 @@ export function Header() {
 
             <button
               onClick={() => setIsMobileMenuOpen(true)}
-              className="lg:hidden flex flex-col items-end gap-[6px] w-8"
+              className="lg:hidden flex flex-col items-end justify-center gap-[6px] w-11 h-11"
               aria-label="Abrir menu"
             >
               <span

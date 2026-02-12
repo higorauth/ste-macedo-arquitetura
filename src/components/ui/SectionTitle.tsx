@@ -23,14 +23,14 @@ export function SectionTitle({
 
   return (
     <motion.div
-      className={`flex flex-col ${alignment} gap-4 mb-16 lg:mb-20`}
+      className={`flex flex-col ${alignment} gap-4 mb-12 md:mb-16 lg:mb-20`}
       variants={staggerContainer}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: "-50px" }}
     >
       <motion.h2
-        className={`font-cormorant font-light text-4xl md:text-5xl lg:text-[56px] leading-tight ${titleColor}`}
+        className={`font-cormorant font-light text-3xl md:text-5xl lg:text-[56px] leading-tight ${titleColor}`}
         variants={fadeUp}
       >
         {title}

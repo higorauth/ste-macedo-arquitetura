@@ -38,7 +38,7 @@ export function Hero() {
   };
 
   return (
-    <section className="relative h-screen w-full overflow-hidden flex items-center justify-center">
+    <section className="relative h-dvh w-full overflow-hidden flex items-center justify-center">
       <AnimatePresence initial={false} custom={direction} mode="popLayout">
         <motion.div
           key={current}

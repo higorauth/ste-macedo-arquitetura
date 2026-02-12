@@ -24,7 +24,7 @@ export function TestimonialSlider() {
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
-      <div className="absolute -top-8 left-1/2 -translate-x-1/2 font-cormorant text-[120px] md:text-[160px] leading-none text-gray-800/30 select-none pointer-events-none">
+      <div className="absolute -top-8 left-1/2 -translate-x-1/2 font-cormorant text-[80px] md:text-[120px] lg:text-[160px] leading-none text-gray-800/30 select-none pointer-events-none">
         &ldquo;
       </div>
 
@@ -58,8 +58,8 @@ export function TestimonialSlider() {
           <button
             key={index}
             onClick={() => setCurrent(index)}
-            className={`w-8 h-[2px] transition-all duration-300 ${
-              index === current ? "bg-white" : "bg-gray-600"
+            className={`w-8 py-3 transition-all duration-300 before:block before:w-full before:h-[2px] ${
+              index === current ? "before:bg-white" : "before:bg-gray-600"
             }`}
             aria-label={`Depoimento ${index + 1}`}
           />

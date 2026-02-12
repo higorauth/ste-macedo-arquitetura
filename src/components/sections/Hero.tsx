@@ -31,12 +31,6 @@ export function Hero() {
     };
   }, [startTimer]);
 
-  const goTo = (index: number) => {
-    setDirection(index > current ? 1 : -1);
-    setCurrent(index);
-    startTimer();
-  };
-
   const variants = {
     enter: (dir: number) => ({ x: dir > 0 ? "100%" : "-100%" }),
     center: { x: "0%" },
@@ -79,18 +73,6 @@ export function Hero() {
         </motion.div>
       </div>
 
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex items-center gap-2">
-        {HERO_IMAGES.map((_, index) => (
-          <button
-            key={index}
-            onClick={() => goTo(index)}
-            className={`w-6 h-[2px] transition-all duration-300 ${
-              index === current ? "bg-white" : "bg-white/30"
-            }`}
-            aria-label={`Imagem ${index + 1}`}
-          />
-        ))}
-      </div>
     </section>
   );
 }

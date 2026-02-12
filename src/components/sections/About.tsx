@@ -86,7 +86,7 @@ export function About() {
               className="font-outfit font-light text-xs text-gray-400 mt-8"
               variants={fadeUp}
             >
-              CNPJ: {CONTACT_INFO.cnpj}
+              
             </motion.p>
           </motion.div>
         </div>

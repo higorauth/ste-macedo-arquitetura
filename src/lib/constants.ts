@@ -271,10 +271,10 @@ export const STATS = [
 ] as const;
 
 export const CONTACT_INFO = {
-  location: "Sorocaba, SP — Brasil",
-  email: "contato@stemacedoarquitetura.com",
-  whatsapp: "+55 15 99999-9999",
-  whatsappLink: "https://wa.me/5515999999999",
+  location: "Edifício Santa Maria Offices — Rua Newton Prado, 449 - sala 801",
+  email: "projetos@stephanie.arq.br",
+  whatsapp: "+55 15 99718-8656",
+  whatsappLink: "https://wa.me/5515997188656",
   instagram: {
     handle: "@stemacedoarquitetura",
     url: "https://www.instagram.com/stemacedoarquitetura",

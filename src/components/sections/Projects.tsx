@@ -68,9 +68,14 @@ export function Projects() {
               return (
                 <div key={project.id} className={colSpan}>
                   <ProjectCard
+                    slug={project.slug}
                     title={project.title}
                     category={project.category}
                     area={project.area}
+                    location={project.location}
+                    lot={project.lot}
+                    builtArea={project.builtArea}
+                    architect={project.architect}
                     image={project.image}
                     index={index}
                     isLarge={isLarge}
